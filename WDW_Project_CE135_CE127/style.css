@@ -1,3 +1,36 @@
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/MDadn8DQ_3oT6kvnUq_2r_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlJbPFduIYtoLzwST68uhz_Y.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 900;
+    src: local('Source Sans Pro Black'), local('SourceSansPro-Black'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGIq-Fb0zf838trI74uojZQY.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('fontawesome-webfont.eot?v=3.0.1');
+    src: url('fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'), url('fontawesome-webfont.woff?v=3.0.1') format('woff'), url('fontawesome-webfont.ttf?v=3.0.1') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /* General */
 
 html {
@@ -85,6 +118,10 @@ nav a {
     -webkit-font-smoothing: antialiased;
 }
 
+.icon-cog:before {
+    content: '\f021'
+}
+
 
 /* Content */
 
@@ -99,6 +136,27 @@ nav a {
 
 #sprite {
     display: none;
+}
+
+
+/*#bg {
+  position: fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .5s ease-in;
+}*/
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
 }
 
 #a {
@@ -125,6 +183,13 @@ nav a {
 
 #bgStack {
     background: #000;
+    position: absolute;
+    z-index: 2;
+}
+
+#hold,
+#preview,
+#stack {
     position: absolute;
     z-index: 2;
 }
@@ -207,6 +272,9 @@ nav a {
     top: 0;
     z-index: 50;
     opacity: 0;
+    /*-webkit-transition: opacity .4s ease-in-out;
+     -moz-transition: opacity .4s ease-in-out;
+       -o-transition: opacity .4s ease-in-out;*/
     transition: opacity .8s ease-out, background .4s ease-out .3s, margin .4s ease-out;
 }
 
@@ -247,4 +315,80 @@ nav a {
 
 #controls td:active {
     background: #1a1a1a;
+}
+
+
+/* Settings */
+
+.left,
+.right {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased;
+    -webkit-transition: all .1s ease-out;
+    transition: all .1s ease-out
+}
+
+.left:hover,
+.right:hover {
+    color: #4da6ee;
+}
+
+.left:before,
+.right:before {
+    text-decoration: inherit;
+    display: inline-block;
+}
+
+.left:before {
+    content: "\f022";
+}
+
+.right:before {
+    content: "\f023";
+}
+
+#settings {
+    margin: 0 0 1em;
+}
+
+#settings b {
+    text-align: left;
+    display: inline-block;
+    width: 7em;
+}
+
+#settings span {
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    width: 5em;
+    margin: 0.3em 0;
+}
+
+
+/* Special Menus */
+
+#go {
+    background: none;
+    transition: opacity .8s ease-out .8s;
+}
+
+#go ul {
+    width: 100%;
+    position: absolute;
+    bottom: 2em;
+}
+
+#pause {
+    background: none;
+    transition: opacity .8s ease-out;
+}
+
+#pause ul {
+    width: 100%;
+    position: absolute;
+    bottom: 2em;
 }
