@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tetris</title>
-    <link rel=stylesheet href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div id="content">
 
-        <!-- Canvases -->
+
         <div id="d">
             <h3>Hold</h3>
 
@@ -21,9 +21,9 @@
                 <canvas id="hold"></canvas>
             </div>
             <ul id="replay" style="display:none">
-                <li><a>prev</a>
-                    <li><a>Play/Pause</a>
-                        <li><a>next</a>
+                <li><a onclick="replay(-1)">prev</a>
+                    <li><a onclick="replay()">Play/Pause</a>
+                        <li><a onclick="replay(1)">next</a>
             </ul>
 
             <table id="stats">
@@ -48,61 +48,94 @@
                 <nav class="menu on">
                     <h1>Tetris</h1>
                     <ul>
-                        <li><a >Play</a>
-                            <li>
-                                <li>
-                                    <a><i class=" " </i>Controls</a>
+                        <li><a onclick="init(0)">Play</a>
+                            <li><a onclick="menu(2)">Controls</a>
+
                     </ul>
                 </nav>
 
+                <div class="menu">
+                    <h2>Settings</h2>
+                    <div id="settings">
+                    </div>
+                    <div style="clear:both"><a class="button" onclick="menu(0)">Done</a></div>
+                </div>
 
+                <div class="menu">
+                    <h2>Controls</h2>
+                    <p>Click on the control you want to change, then press any key.
+                        <table id="controls">
+                            <tr>
+                                <th>Move Left:
+                                    <td id="moveLeft">←
+                                        <tr>
+                                            <th>Move Right:
+                                                <td id="moveRight">→
+                                                    <tr>
+                                                        <th>Move Down:
+                                                            <td id="moveDown">↓
+                                                                <tr>
+                                                                    <th>Hard Drop:
+                                                                        <td id="hardDrop">Space
+                                                                            <tr>
+                                                                                <th>Hold:
+                                                                                    <td id="holdPiece">C
+                                                                                        <tr>
+                                                                                            <th>Spin Right:
+                                                                                                <td id="rotRight">X
+                                                                                                    <tr>
+                                                                                                        <th>Spin Left:
+                                                                                                            <td id="rotLeft">Z
+                                                                                                                <tr>
+                                                                                                                    <th>Spin 180:
+                                                                                                                        <td id="rot180">Shift
+                                                                                                                            <tr>
+                                                                                                                                <th>Retry:
+                                                                                                                                    <td id="retry">R
+                                                                                                                                        <tr>
+                                                                                                                                            <th>Pause:
+                                                                                                                                                <td id="pause">Esc
+                        </table>
+                        <div style="clear:both"><a class="button" onclick="menu(0)">Done</a></div>
+                </div>
+                <nav id="go" class="menu">
+                    <ul>
+                        <li><a onclick="init(gametype)">Retry</a>
+                            <li><a onclick="menu(0)">Main Menu</a>
+                    </ul>
+                </nav>
+
+                <nav id="pause" class="menu">
+                    <ul>
+                        <li><a onclick="unpause()">Back</a>
+                            <li><a onclick="init(gametype)">Retry</a>
+                                <li><a onclick="menu(0)">Main Menu</a>
+                    </ul>
+                </nav>
         </div>
 
-        <div class="menu ">
-            <h2>Controls</h2>
-            <p>Click on the control you want to change, then press any key.
-                <table id="controls ">
-                    <tr>
-                        <th>Move Left:
-                            <td id="moveLeft ">←
-                                <tr>
-                                    <th>Move Right:
-                                        <td id="moveRight ">→
-                                            <tr>
-                                                <th>Move Down:
-                                                    <td id="moveDown ">↓
-                                                        <tr>
-                                                            <th>Hard Drop:
-                                                                <td id="hardDrop ">Space
-                                                                    <tr>
-                                                                        <th>Hold:
-                                                                            <td id="holdPiece ">C
-                                                                                <tr>
-                                                                                    <th>Spin Right:
-                                                                                        <td id="rotRight ">X
-                                                                                            <tr>
-                                                                                                <th>Spin Left:
-                                                                                                    <td id="rotLeft ">Z
-                                                                                                        <tr>
-                                                                                                            <th>Spin 180:
-                                                                                                                <td id="rot180 ">Shift
-                                                                                                                    <tr>
-                                                                                                                        <th>Retry:
-                                                                                                                            <td id="retry ">R
-                                                                                                                                <tr>
-                                                                                                                                    <th>Pause:
-                                                                                                                                        <td id="pause ">Esc
-                </table>
-                <div style="clear:both "><a class="button">Done</a></div>
-
-                
-
+        <div id="c">
+            <h3>Next</h3>
+            <canvas id="preview"></canvas>
         </div>
+
+    </div>
+
+
+
 
 
 
     </div>
-   
+    <canvas id="sprite"></canvas>
+    <script src="style.js"></script>
+    <script src="piece.js"></script>
+    <script src="stack.js"></script>
+    <script src="hold.js"></script>
+    <script src="preview.js"></script>
+    <script src="menu.js"></script>
+
+
 </body>
 
 </html>
